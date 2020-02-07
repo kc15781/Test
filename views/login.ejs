@@ -1,0 +1,36 @@
+<% include partials/header %>
+
+<div id="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-4 mx-auto">
+                    <div class="card-body">
+
+                        <h5 class="card-title text-center">Please Sign In</h5>
+
+                        <% include ./partials/messages %>
+
+                        <form class="form-signin mt-1" action="login" method="post">
+
+                            <div class="form-label-group">
+                                <input type="email" id="email" class="form-control" placeholder="Email address" name="email" required autofocus>
+                                <label for="email">Email Address</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="password" id="password" class="form-control" placeholder="Password" name="password" required>
+                                <label for="password">Password</label>
+                            </div>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Sign in</button>
+                            <p class="d-block text-center mt-4">Haven't got an account?</p>
+                            <a class="d-block text-center mt-1" href="/signup">Register Here</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<% include partials/footer %>

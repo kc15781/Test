@@ -1,0 +1,193 @@
+<% include partials/header %>
+
+
+<div id="page-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-4 mx-auto">
+                    <div class="card-body">
+
+                        <h5 class="card-title text-center">Please Register</h5>
+                        <p class="text-center mb-4"><small>We recommend <strong>NOT</strong> to use @qq.com email.</small></p>
+
+                        <% include ./partials/messages %>
+
+                        <form class="form-signin mt-1" action="/signup" method="post">
+
+
+                            <div class="form-label-group">
+                                <input type="text" id="firstname" class="form-control" placeholder="First Name" name="firstname"
+                                       value="<%= typeof firstname != 'undefined' ? firstname : '' %>"
+                                       required autofocus>
+                                <label for="firstname">First Name</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="text" id="surname" class="form-control" placeholder="Surname" name="surname"
+                                       value="<%= typeof surname != 'undefined' ? surname : '' %>"
+                                       required>
+                                <label for="surname">Surname</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="email" id="email" class="form-control" placeholder="Email Address" name="email"
+                                       value="<%= typeof email != 'undefined' ? email : '' %>"
+                                       required>
+                                <label for="email">Email Address</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="text" id="wechat" class="form-control" placeholder="wechat" name="wechat"
+                                       value="<%= typeof wechat != 'undefined' ? wechat : '' %>"
+                                       required>
+                                <label for="wechat">WeChat ID</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="password" id="password" class="form-control" placeholder="Password" name="password"
+                                       value="<%= typeof password != 'undefined' ? password : '' %>"
+                                       required>
+                                <label for="password">Password</label>
+                            </div>
+
+                            <div class="form-label-group">
+                                <input type="password" id="password2" class="form-control" placeholder="Confirm Password" name="password2"
+                                       value="<%= typeof password2 != 'undefined' ? password2 : '' %>" required>
+                                <label for="password2">Confirm Password</label>
+                            </div>
+
+                            <hr class="my-5">
+                            <h4 class="card-title text-center">About Yourself</h4>
+
+                            <div class="form-group">
+                                <label for="uniSelect">University<sup class="text-danger">*</sup></label>
+                                <select class="form-control" name="university" id="uniSelect" required>
+                                    <option value="University of Bristol">University of Bristol</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="yearSelect">Year<sup class="text-danger">*</sup></label>
+                                <select class="form-control" name="year" id="yearSelect" required>
+                                    <option value="Foundation">Foundation</option>
+                                    <option value="Undergraduate">Undergraduate</option>
+                                    <option value="Postgraduate">Postgraduate</option>
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="courseSelect">Courses<sup class="text-danger">*</sup></label>
+                                <select class="form-control" name="course" id="courseSelect" required>
+                                    <option value="Accounting and Finance, BSc">Accounting and Finance, BSc</option>
+                                    <option value="Accounting and Finance, MSc">Accounting and Finance, MSc</option>
+                                    <option value="Accounting and Management, BSc">Accounting and Management, BSc</option>
+                                    <option value="Accounting, Finance and Management, MSc">Accounting, Finance and Management, MSc</option>
+                                    <option value="Advanced Composites, MSc">Advanced Composites, MSc</option>
+                                    <option value="Advanced Quantitative Methods, MRes">Advanced Quantitative Methods, MRes</option>
+                                    <option value="Aerospace Engineering, BEng">Aerospace Engineering, BEng</option>
+                                    <option value="Aerospace Engineering, MEng">Aerospace Engineering, MEng</option>
+                                    <option value="Banking, Regulation, and Financial Stability, MSc">Banking, Regulation, and Financial Stability, MSc</option>
+                                    <option value="Biochemistry">Biochemistry</option>
+                                    <option value="Biochemistry with Medical Biochemistry">Biochemistry with Medical Biochemistry</option>
+                                    <option value="Biochemistry with Molecular Biology and Biotechnology">Biochemistry with Molecular Biology and Biotechnology</option>
+                                    <option value="Biochemistry with Study in Industry, BSc">Biochemistry with Study in Industry, BSc</option>
+                                    <option value="Biology, BSc/MSc">Biology, BSc/MSc</option>
+                                    <option value="Biomedical Engineering, MSc">Biomedical Engineering, MSc</option>
+                                    <option value="Biomedical Sciences Research, MSc">Biomedical Sciences Research, MSc</option>
+                                    <option value="Biomedical Sciences, BSc">Biomedical Sciences, BSc</option>
+
+                                    <option value="Chemical Physics, BSc">Chemical Physics, BSc</option>
+                                    <option value="Chemistry, BSc">Chemistry, BSc</option>
+                                    <option value="Civil Engineering, BEng">Civil Engineering, BEng</option>
+                                    <option value="Civil Engineering, MEng">Civil Engineering, MEng</option>
+                                    <option value="Classical Studies, BA">Classical Studies, BA</option>
+                                    <option value="Classics, BA">Classics, BA</option>
+                                    <option value="Computer Science (conversion), MSc">Computer Science (conversion), MSc</option>
+                                    <option value="Computer Science and Electronics, BEng">Computer Science and Electronics, BEng</option>
+                                    <option value="Computer Science and Electronics, MEng">Computer Science and Electronics, MEng</option>
+                                    <option value="Computer Science, BSc">Computer Science, BSc</option>
+                                    <option value="Computer Science, MEng">Computer Science, MEng</option>
+                                    <option value="East Asian Development and the Global Economy, MSc">East Asian Development and the Global Economy, MSc</option>
+                                    <option value="Economics and Accounting, BSc">Economics and Accounting, BSc</option>
+                                    <option value="Economics and Econometrics, BSc">Economics and Econometrics, BSc</option>
+                                    <option value="Economics and Finance, BSc">Economics and Finance, BSc</option>
+                                    <option value="Economics and Finance, MSc">Economics and Finance, MSc</option>
+
+                                    <option value="Economics and Management, BSc">Economics and Management, BSc</option>
+                                    <option value="Economics and Mathematics, BSc">Economics and Mathematics, BSc</option>
+                                    <option value="Economics and Politics, BSc">Economics and Politics, BSc</option>
+                                    <option value="Economics, Accounting and Finance, MSc">Economics, Accounting and Finance, MSc</option>
+                                    <option value="Economics, BSc">Economics, BSc</option>
+                                    <option value="Economics, MSc">Economics, MSc</option>
+                                    <option value="Education Studies, BSc">Education Studies, BSc</option>
+                                    <option value="Education, MSc">Education, MSc</option>
+                                    <option value="Electrical and Electronic Engineering, BEng">Electrical and Electronic Engineering, BEng</option>
+                                    <option value="Electrical and Electronic Engineering, MEng">Electrical and Electronic Engineering, MEng</option>
+                                    <option value="Computer Science, MEng">Computer Science, MEng</option>
+                                    <option value="Electrical and Electronic Engineering, PhD, MSc by research">Electrical and Electronic Engineering, PhD, MSc by research</option>
+                                    <option value="Engineering Mathematics, BEng">Engineering Mathematics, BEng</option>
+                                    <option value="Engineering Mathematics, MEng">Engineering Mathematics, MEng</option>
+                                    <option value="Engineering Mathematics, MSc">Engineering Mathematics, MSc</option>
+                                    <option value="Environmental Policy and Management, MSc">Environmental Policy and Management, MSc</option>
+
+                                    <option value="Finance and Investment, MSc">Finance and Investment, MSc</option>
+                                    <option value="Innovation and Entrepreneurship, MSc">Innovation and Entrepreneurship, MSc</option>
+                                    <option value="International Business Management, BSc">International Business Management, BSc</option>
+                                    <option value="International Development, MSc">International Development, MSc</option>
+                                    <option value="International Foundation Programme Arts and Humanities">International Foundation Programme Arts and Humanities</option>
+                                    <option value="International Foundation Programme Science, Technology, Engineering and Mathematics">International Foundation Programme Science, Technology, Engineering and Mathematics</option>
+                                    <option value="International Foundation Programme Social Sciences and Law">International Foundation Programme Social Sciences and Law</option>
+                                    <option value="International Relations, MSc">International Relations, MSc</option>
+                                    <option value="International Security, MSc">International Security, MSc</option>
+                                    <option value="Law, LLB">Law, LLB</option>
+                                    <option value="Law, LLM">Law, LLM</option>
+                                    <option value="Law, MA">Law, MA</option>
+                                    <option value="Management with Innovation, MSc">Management with Innovation, MSc</option>
+                                    <option value="Management, BSc">Management, BSc</option>
+                                    <option value="Management, MSc">Management, MSc</option>
+                                    <option value="Marketing, BSc">Marketing, BSc</option>
+                                    <option value="Marketing, MSc">Marketing, MSc</option>
+
+                                    <option value="Mathematical Sciences, MSc">Mathematical Sciences, MSc</option>
+                                    <option value="Mathematics and Computer Science, BSc">Mathematics and Computer Science, BSc</option>
+                                    <option value="Mathematics and Computer Science, MEng">Mathematics and Computer Science, MEng</option>
+                                    <option value="Mathematics and Philosophy, BSc">Mathematics and Philosophy, BSc</option>
+                                    <option value="Mathematics and Philosophy, MSc">Mathematics and Philosophy, MSc</option>
+                                    <option value="Mathematics and Physics, BSc">Mathematics and Physics, BSc</option>
+                                    <option value="Mathematics and Physics, MSc">Mathematics and Physics, MSc</option>
+                                    <option value="Mathematics of Cybersecurity, MSc">Mathematics of Cybersecurity, MSc</option>
+                                    <option value="Mathematics with Statistics for Finance, BSc">Mathematics with Statistics for Finance, BSc</option>
+                                    <option value="Mathematics with Statistics, MSc">Mathematics with Statistics, MSc</option>
+                                    <option value="Mathematics, BSc">Mathematics, BSc</option>
+                                    <option value="Mathematics, MSc">Mathematics, MSc</option>
+                                    <option value="Mechanical and Electrical Engineering, BEng">Mechanical and Electrical Engineering, BEng</option>
+                                    <option value="Mechanical and Electrical Engineering, MEng">Mechanical and Electrical Engineering, MEng</option>
+                                    <option value="Mechanical Engineering, BEng">Mechanical Engineering, BEng</option>
+                                    <option value="Mechanical Engineering, MEng">Mechanical Engineering, MEng</option>
+                                    <option value="Medicine, MBChB">Medicine, MBChB</option>
+                                    <option value="Philosophy and Economics, BSc">Philosophy and Economics, BSc</option>
+
+                                    <option value="Other">Other</option>
+                                </select>
+                            </div>
+                            <p><sup class="text-danger">*required</sup></p>
+
+                            <div class="form-check my-3">
+                                <input type="checkbox" class="form-check-input" id="Check1" required>
+                                <label class="form-check-label" for="Check1">By ticking this box, you agree to our <a
+                                            href="/terms">T&Cs</a>.</label>
+                            </div>
+
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Register</button>
+                            <a class="d-block text-center mt-2" href="/login">Or Sign In</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% include partials/footer %>

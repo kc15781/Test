@@ -1,0 +1,321 @@
+﻿<% include partials/header %>
+
+<!--for fade-in animation -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+<script>
+  AOS.init();
+
+</script>
+<!--for fade-in animation -->
+
+
+<script>
+function update() {
+  var p1=document.getElementById('password').value
+  var p2=document.getElementById('password2').value
+  if (p1 != p2) {
+  alert("The passwords don't match");
+  }	
+  else{
+  document.getElementById('form_sub').submit();}
+}   
+
+
+<% if(typeof errors != 'undefined'){%> 
+document.location.hash = "#anchor1"; 
+<%}%>
+
+</script>
+
+<section id="mainSection" class="jumbotron jumbotron-fluid mb-0">
+    <div class="container text-center my-1 mx-auto">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-6 col-md-8  col-sm-10 col-12 mt-0 mb-0">
+                <a href="/home"><img src="images/logoFinal.png" width="300" height="180"></a>
+                <h1 id= "main_title" class="font-weight-light mt-4 text-dark mb-2">Erdemy User Center</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section  class="jumbotron jumbotron-fluid mt-0 mb-0 white">
+
+  <div class="row mx-0 px-0">
+   <div class="col">
+     <h1>Current membership: <% if (currentUser.membership==0){ %> Free membership <% } else if (currentUser.membership==1) { %> Gold membership <% } else if (currentUser.membership==2) { %> Diamond membership <% } %></h1>
+	 <hr>
+   </div>
+  </div>
+
+<!--
+  <div class="row justify-content-center mx-0 px-0">
+   
+   <% if (currentUser.membership==0){ %> 
+   <div class="col-auto mt-3" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+		<div class="card" style="width: 18rem;">
+		  <img class="card-img-top" src="images/test.png" alt="Card image cap">
+		  <div class="card-body">
+			<h5 class="card-title">Gold membership</h5>
+			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			<a href="#" class="btn btn-primary">Buy</a>
+		  </div>
+		</div>
+   </div> <% } %>
+   
+   <% if (currentUser.membership<=1){ %> 
+   <div class="col-auto mt-3" data-aos="flip-left" data-aos-easing="ease-out-cubic" data-aos-duration="2000">
+		<div class="card" style="width: 18rem;">
+		  <img class="card-img-top" src="images/test.png" alt="Card image cap">
+		  <div class="card-body">
+			<h5 class="card-title">Diamond membership</h5>
+			<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+			<a href="#" class="btn btn-primary">Buy</a>
+		  </div>
+		</div>
+   </div><% } %>
+
+  </div>   -->
+
+</section>
+
+
+<a id="anchor1" name="anchor1"></a>
+<section  class="jumbotron jumbotron-fluid mt-0 mb-0 white">
+
+ <div class="row mx-0 px-0">
+   <div class="col">
+     <h1>User Details</h1>
+	 <hr>
+   </div>
+ </div>
+
+ 
+ <% include ./partials/messages %>
+  <form class="form-signin mt-1" action="/user_change" method="post" id="form_sub">
+    <div class="row mx-0 px-0">
+
+		<div class="col-auto my-auto">
+           <p>First name: <% if(typeof firstname_old != 'undefined'){%> <%=firstname_old %> <%} else if(typeof firstname_new != 'undefined'){ %> <%=firstname_new%> <%} else{ %> <%=currentUser.firstname %> <%}%> </p>
+		</div>
+
+		<div class="col-6 col-sm-5 col-md-4 col-lg-3">
+			<div class="form-label-group">
+				<input type="text" id="firstname" class="form-control" placeholder="First Name" name="firstname"
+						value="<%= typeof firstname != 'undefined' ? firstname : '' %>"
+						>
+				<label for="firstname">New First Name</label>
+			</div>
+		</div>
+    </div>
+
+
+    <div class="row mx-0 px-0">
+		<div class="col-auto my-auto">
+           <p>Surname:<% if(typeof surname_old != 'undefined'){%> <%=surname_old %> <%} else if(typeof surname_new != 'undefined'){ %> <%=surname_new%> <%} else{ %> <%=currentUser.surname %> <%}%></p>
+		</div>
+		<div class="col-6 col-sm-5 col-md-4 col-lg-3">
+			<div class="form-label-group">
+                <input type="text" id="surname" class="form-control" placeholder="Surname" name="surname"
+                        value="<%= typeof surname != 'undefined' ? surname : '' %>"
+                        >
+                <label for="surname">New Surname</label>
+			</div>
+		</div>
+    </div>
+
+
+    <div class="row mx-0 px-0">
+		<div class="col-auto my-auto">
+           <p>Email: <% if(typeof email_old != 'undefined'){%> <%=email_old %> <%} else if(typeof email_new != 'undefined'){ %> <%=email_new%> <%} else{ %> <%=currentUser.surname %> <%}%></p>
+		</div>
+		<div class="col-5 col-sm-5 col-md-4 col-lg-3">
+			<div class="form-label-group">
+                <input type="email" id="email" class="form-control" placeholder="Email Address" name="email"
+                        value="<%= typeof email != 'undefined' ? email : '' %>"
+                        >
+                <label for="email">New Email</label>
+			</div>
+		</div>
+
+		<div class="col-auto my-auto">
+	      <p class="mb-4"><small>We recommend <strong>NOT</strong> to use @qq.com email.</small></p>
+		</div>
+
+    </div>                        
+
+    <div class="row mx-0 px-0">
+		<div class="col-auto my-auto">
+           <p>Wechat: <% if(typeof wechat_old != 'undefined'){%> <%=wechat_old %> <%} else if(typeof wechat_new != 'undefined'){ %> <%=wechat_new%> <%} else{ %> <%=currentUser.wechat %> <%}%></p>
+		</div>
+		<div class="col-6 col-sm-5 col-md-4 col-lg-3">
+			<div class="form-label-group">
+                <input type="text" id="wechat" class="form-control" placeholder="wechat" name="wechat"
+                        value="<%= typeof wechat != 'undefined' ? wechat : '' %>"
+                        >
+                <label for="wechat">New WeChat ID</label>
+			</div>
+		</div>
+    </div>
+
+    <div class="row mx-0 px-0">
+		<div class="col-auto my-auto">
+           <p>Password</p>
+		</div>
+		<div class="col-6 col-sm-5 col-md-4 col-lg-3">
+			<div class="form-label-group">
+                <input type="password" id="password" class="form-control" placeholder="Password" name="password"
+                        value="<%= typeof password_entered != 'undefined' ? password_entered : '' %>"
+                        >
+                <label for="password">New Password</label>
+			</div>
+		</div>
+		<div class="col-6 col-sm-5 col-md-4 col-lg-3">
+			<div class="form-label-group">
+                <input type="password" id="password2" class="form-control" placeholder="Confirm Password" name="password2"
+                        value="<%= typeof password2_entered != 'undefined' ? password2_entered : '' %>">
+                <label for="password2">Confirm new Password</label>
+			</div>
+		</div>
+    </div>
+
+
+    <div class="row mx-0 px-0">
+	   <div class="col-6">
+                <div class="form-group">
+                    <label for="uniSelect">University: <% if(typeof university_old != 'undefined'){%> <%=university_old %> <%} else if(typeof university_new != 'undefined'){ %> <%=university_new%> <%} else{ %> <%=currentUser.university %> <%}%></label>
+                    <select class="form-control" name="university" id="uniSelect" required>
+                        <option value="<%= typeof university != 'undefined' ? university : '' %>"> <%= typeof university != 'undefined' ? university : '' %> </option>
+                        <option value="University of Bristol">University of Bristol</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="yearSelect">Year: <% if(typeof year_old != 'undefined'){%> <%=year_old %> <%} else if(typeof year_new != 'undefined'){ %> <%=year_new%> <%} else{ %> <%=currentUser.year %> <%}%> </label>
+                    <select class="form-control" name="year" id="yearSelect" required>
+                        <option value="<%= typeof year != 'undefined' ? year : '' %>"> <%= typeof year != 'undefined' ? year : '' %> </option>
+                        <option value="Foundation">Foundation</option>
+                        <option value="Undergraduate">Undergraduate</option>
+                        <option value="Postgraduate">Postgraduate</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="courseSelect">Courses: <% if(typeof course_old != 'undefined'){%> <%=course_old %> <%} else if(typeof course_new != 'undefined'){ %> <%=course_new%> <%} else{ %> <%=currentUser.course %> <%}%></label>
+                    <select class="form-control" name="course" id="courseSelect" required>
+                        <option value="<%= typeof course != 'undefined' ? course : '' %>"><%= typeof course != 'undefined' ? course : '' %></option>
+                        <option value="Accounting and Finance, BSc">Accounting and Finance, BSc</option>
+                        <option value="Accounting and Finance, MSc">Accounting and Finance, MSc</option>
+                        <option value="Accounting and Management, BSc">Accounting and Management, BSc</option>
+                        <option value="Accounting, Finance and Management, MSc">Accounting, Finance and Management, MSc</option>
+                        <option value="Advanced Composites, MSc">Advanced Composites, MSc</option>
+                        <option value="Advanced Quantitative Methods, MRes">Advanced Quantitative Methods, MRes</option>
+                        <option value="Aerospace Engineering, BEng">Aerospace Engineering, BEng</option>
+                        <option value="Aerospace Engineering, MEng">Aerospace Engineering, MEng</option>
+                        <option value="Banking, Regulation, and Financial Stability, MSc">Banking, Regulation, and Financial Stability, MSc</option>
+                        <option value="Biochemistry">Biochemistry</option>
+                        <option value="Biochemistry with Medical Biochemistry">Biochemistry with Medical Biochemistry</option>
+                        <option value="Biochemistry with Molecular Biology and Biotechnology">Biochemistry with Molecular Biology and Biotechnology</option>
+                        <option value="Biochemistry with Study in Industry, BSc">Biochemistry with Study in Industry, BSc</option>
+                        <option value="Biology, BSc/MSc">Biology, BSc/MSc</option>
+                        <option value="Biomedical Engineering, MSc">Biomedical Engineering, MSc</option>
+                        <option value="Biomedical Sciences Research, MSc">Biomedical Sciences Research, MSc</option>
+                        <option value="Biomedical Sciences, BSc">Biomedical Sciences, BSc</option>
+
+                        <option value="Chemical Physics, BSc">Chemical Physics, BSc</option>
+                        <option value="Chemistry, BSc">Chemistry, BSc</option>
+                        <option value="Civil Engineering, BEng">Civil Engineering, BEng</option>
+                        <option value="Civil Engineering, MEng">Civil Engineering, MEng</option>
+                        <option value="Classical Studies, BA">Classical Studies, BA</option>
+                        <option value="Classics, BA">Classics, BA</option>
+                        <option value="Computer Science (conversion), MSc">Computer Science (conversion), MSc</option>
+                        <option value="Computer Science and Electronics, BEng">Computer Science and Electronics, BEng</option>
+                        <option value="Computer Science and Electronics, MEng">Computer Science and Electronics, MEng</option>
+                        <option value="Computer Science, BSc">Computer Science, BSc</option>
+                        <option value="Computer Science, MEng">Computer Science, MEng</option>
+                        <option value="East Asian Development and the Global Economy, MSc">East Asian Development and the Global Economy, MSc</option>
+                        <option value="Economics and Accounting, BSc">Economics and Accounting, BSc</option>
+                        <option value="Economics and Econometrics, BSc">Economics and Econometrics, BSc</option>
+                        <option value="Economics and Finance, BSc">Economics and Finance, BSc</option>
+                        <option value="Economics and Finance, MSc">Economics and Finance, MSc</option>
+
+                        <option value="Economics and Management, BSc">Economics and Management, BSc</option>
+                        <option value="Economics and Mathematics, BSc">Economics and Mathematics, BSc</option>
+                        <option value="Economics and Politics, BSc">Economics and Politics, BSc</option>
+                        <option value="Economics, Accounting and Finance, MSc">Economics, Accounting and Finance, MSc</option>
+                        <option value="Economics, BSc">Economics, BSc</option>
+                        <option value="Economics, MSc">Economics, MSc</option>
+                        <option value="Education Studies, BSc">Education Studies, BSc</option>
+                        <option value="Education, MSc">Education, MSc</option>
+                        <option value="Electrical and Electronic Engineering, BEng">Electrical and Electronic Engineering, BEng</option>
+                        <option value="Electrical and Electronic Engineering, MEng">Electrical and Electronic Engineering, MEng</option>
+                        <option value="Computer Science, MEng">Computer Science, MEng</option>
+                        <option value="Electrical and Electronic Engineering, PhD, MSc by research">Electrical and Electronic Engineering, PhD, MSc by research</option>
+                        <option value="Engineering Mathematics, BEng">Engineering Mathematics, BEng</option>
+                        <option value="Engineering Mathematics, MEng">Engineering Mathematics, MEng</option>
+                        <option value="Engineering Mathematics, MSc">Engineering Mathematics, MSc</option>
+                        <option value="Environmental Policy and Management, MSc">Environmental Policy and Management, MSc</option>
+
+                        <option value="Finance and Investment, MSc">Finance and Investment, MSc</option>
+                        <option value="Innovation and Entrepreneurship, MSc">Innovation and Entrepreneurship, MSc</option>
+                        <option value="International Business Management, BSc">International Business Management, BSc</option>
+                        <option value="International Development, MSc">International Development, MSc</option>
+                        <option value="International Foundation Programme Arts and Humanities">International Foundation Programme Arts and Humanities</option>
+                        <option value="International Foundation Programme Science, Technology, Engineering and Mathematics">International Foundation Programme Science, Technology, Engineering and Mathematics</option>
+                        <option value="International Foundation Programme Social Sciences and Law">International Foundation Programme Social Sciences and Law</option>
+                        <option value="International Relations, MSc">International Relations, MSc</option>
+                        <option value="International Security, MSc">International Security, MSc</option>
+                        <option value="Law, LLB">Law, LLB</option>
+                        <option value="Law, LLM">Law, LLM</option>
+                        <option value="Law, MA">Law, MA</option>
+                        <option value="Management with Innovation, MSc">Management with Innovation, MSc</option>
+                        <option value="Management, BSc">Management, BSc</option>
+                        <option value="Management, MSc">Management, MSc</option>
+                        <option value="Marketing, BSc">Marketing, BSc</option>
+                        <option value="Marketing, MSc">Marketing, MSc</option>
+
+                        <option value="Mathematical Sciences, MSc">Mathematical Sciences, MSc</option>
+                        <option value="Mathematics and Computer Science, BSc">Mathematics and Computer Science, BSc</option>
+                        <option value="Mathematics and Computer Science, MEng">Mathematics and Computer Science, MEng</option>
+                        <option value="Mathematics and Philosophy, BSc">Mathematics and Philosophy, BSc</option>
+                        <option value="Mathematics and Philosophy, MSc">Mathematics and Philosophy, MSc</option>
+                        <option value="Mathematics and Physics, BSc">Mathematics and Physics, BSc</option>
+                        <option value="Mathematics and Physics, MSc">Mathematics and Physics, MSc</option>
+                        <option value="Mathematics of Cybersecurity, MSc">Mathematics of Cybersecurity, MSc</option>
+                        <option value="Mathematics with Statistics for Finance, BSc">Mathematics with Statistics for Finance, BSc</option>
+                        <option value="Mathematics with Statistics, MSc">Mathematics with Statistics, MSc</option>
+                        <option value="Mathematics, BSc">Mathematics, BSc</option>
+                        <option value="Mathematics, MSc">Mathematics, MSc</option>
+                        <option value="Mechanical and Electrical Engineering, BEng">Mechanical and Electrical Engineering, BEng</option>
+                        <option value="Mechanical and Electrical Engineering, MEng">Mechanical and Electrical Engineering, MEng</option>
+                        <option value="Mechanical Engineering, BEng">Mechanical Engineering, BEng</option>
+                        <option value="Mechanical Engineering, MEng">Mechanical Engineering, MEng</option>
+                        <option value="Medicine, MBChB">Medicine, MBChB</option>
+                        <option value="Philosophy and Economics, BSc">Philosophy and Economics, BSc</option>
+
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+
+
+
+	   </div>
+    </div>
+
+ </form>
+
+ <div class="row mx-0 px-0">
+	<div class="col-auto">
+    	<button class="btn btn-lg btn-primary btn-block text-uppercase" onclick="update()">Update user details</button>
+	</div>
+ </div>
+
+
+</section>
+
+
+
+
+<% include partials/footer %>
