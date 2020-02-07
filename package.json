@@ -1,0 +1,27 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kc15781/Test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kc15781/Test/issues"
+  },
+  "homepage": "https://github.com/kc15781/Test#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.8",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "http-errors": "^1.7.3",
+    "passport": "^0.4.1",
+    "validator": "^12.2.0"
+  }
+}
